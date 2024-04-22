@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+
+  --dark-scheme-bg-color: rgba(24, 24, 24, 0.4);
+  --dark-scheme-comp-color: rgb(34, 34, 34);
+  --dark-scheme-text-color: whitesmoke;
+
+  --light-scheme-bg-color: rgba(236, 231, 231, 0.4);
+  --light-scheme-comp-color: whitesmoke;
+  --light-scheme-text-color: rgb(22, 22, 22);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  background-color: inherit;
+  box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--dark-scheme-bg-color); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(24, 24, 24, 0.6); 
+}
+
+button:focus {
+  outline: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--dark-scheme-bg-color);
+  width: 100%;
+  height: 100%;
+}
+
+.game-container {
+  user-select: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  font-size: 1.3rem;
+}
+
+.custom-scheme {
+  background-color: var(--dark-scheme-comp-color);
+  color: var(--light-scheme-text-color);
+}
+
+.global-header {
+  color: var(--dark-scheme-text-color);
+  background-color: var(--dark-scheme-comp-color);
+}
+
+.global-sider {
+  color: var(--dark-scheme-text-color);
+  background-color: var(--dark-scheme-comp-color);
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--light-scheme-bg-color);
+  }
+
+  .global-header {
+    color: var(--light-scheme-text-color);
+    background-color: var(--light-scheme-comp-color);
+  }
+
+  .global-sider {
+    color: var(--light-scheme-text-color);
+    background-color: var(--light-scheme-comp-color);
+  }
+
+  .custom-scheme {
+    background-color: var(--dark-scheme-comp-color);
+    color: var(--light-scheme-text-color);
+  }
+
+  .markdown-body {
+    color: var(--dark-scheme-text-color) !important;
+    background-color: var(--light-scheme-comp-color) !important;
+  }
+
+  /* .markdown-body code {
+    background-color: var(--light-scheme-bg-color) !important;
+    color: var(--light-scheme-text-color) !important;
+  } */
+}
+
+.markdown-body {
+  background-color: var(--dark-scheme-comp-color) !important;
+  /* color: var(--dark-scheme-text-color) !important; */
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.mineSweeper-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.markdown-body ul {
+  list-style: disc;
+}
+
+.markdown-body blockquote {
+  font-size: 1.2rem;
+}
+
+.markdown-body code {
+  background-color: var(--dark-scheme-text-color) !important;
+}
+
+.markdown-body pre {
+  padding: 0 !important;
+}
+
+.markdown-body svg {
+  width: 100%;
+}
