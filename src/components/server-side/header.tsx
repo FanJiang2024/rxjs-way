@@ -1,5 +1,9 @@
 import React from "react";
-import { AiOutlineGithub } from "react-icons/ai";
+import {
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+  AiOutlineGithub,
+} from "react-icons/ai";
 import Link from "next/link";
 import { SiderToggle } from "@/components/sider-toggle";
 import { Sider } from "@/components/server-side/sider";

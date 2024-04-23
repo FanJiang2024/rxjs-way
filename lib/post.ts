@@ -53,7 +53,10 @@ export function getDirStructure(
 ): FileStructure[] {
   const res = fs
     .readdirSync(dirPath)
-    .filter((file) => !!file.slice(0, file.lastIndexOf(".")))
+    .filter(
+      (file) =>
+        !file.endsWith(".pdf") && !!file.slice(0, file.lastIndexOf(".")),
+    )
     .map((file) => {
       const filePath = path.join(dirPath, file);
       const stat = fs.lstatSync(filePath);

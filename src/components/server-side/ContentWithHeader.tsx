@@ -1,5 +1,4 @@
 import { Header } from "@/components/server-side/header";
-// import { ArrowsScrollingClose } from "../arrows-close-scrolling";
 
 export const ContentWithHeader = ({
   children,
@@ -10,14 +9,14 @@ export const ContentWithHeader = ({
     <>
       <div
         className='flex flex-col mx-auto items-center w-full relative box-border
-        sm:w-3/5 p-2 gap-2'>
-        <div className='h-10 rounded-md'>
+        sm:w-3/5 p-2 gap-2
+        bg-[rgba(236,231,231,0.4)]'>
+        <div className={`h-10 rounded-md peer header-wrapper`}>
           <Header />
         </div>
 
         {children}
       </div>
-      {/* <ArrowsScrollingClose /> */}
     </>
   );
 };

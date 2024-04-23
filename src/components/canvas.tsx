@@ -6,6 +6,7 @@ import { CanvasUtil } from "@lib/canvas";
 import { PlanetItemType } from "@/app/canvas/types";
 import { callWhenIdle, getData, throttle } from "@lib/utils";
 import React from "react";
+import { ArrowsScrollingClose } from "@/components/arrows-close-scrolling";
 import { usePathname } from "next/navigation";
 
 const width = 1920;
@@ -32,6 +33,7 @@ const randomDiameter = () => {
 };
 
 const Canvas = () => {
+  const path = usePathname();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const sceneAndEngineRef = useRef<{ engine: Engine; scene: Scene } | null>(
     null,
@@ -150,16 +152,17 @@ const Canvas = () => {
       {error ? (
         error
       ) : (
-        <canvas
-          onPointerDown={canvasPointerEventHandler.handlePointerDown}
-          onPointerMove={canvasPointerEventHandler.handlePointerMove}
-          onPointerUp={canvasPointerEventHandler.handlePointerUp}
-          ref={canvasRef}
-          className={
-            " cursor-grab w-full h-full box-border fixed top-0 left-0 -z-10 "
-          }>
-          It seems that your browser does not support canvas. What a pity :(
-        </canvas>
+        <>
+          <canvas
+            onPointerDown={canvasPointerEventHandler.handlePointerDown}
+            onPointerMove={canvasPointerEventHandler.handlePointerMove}
+            onPointerUp={canvasPointerEventHandler.handlePointerUp}
+            ref={canvasRef}
+            className={`cursor-grab w-full h-full box-border fixed top-0 left-0 ${path==="/canvas" ? "z-0" : "-z-10"}`}>
+            It seems that your browser does not support canvas. What a pity :(
+          </canvas>
+          <ArrowsScrollingClose />
+        </>
       )}
     </>
   );
