@@ -4,7 +4,7 @@ import Link from "next/link";
 type MenuItemProps = FileStructure;
 
 const MenuItem = ({ label, id: path, subMenus }: MenuItemProps) => {
-  let href = path.includes("game") ? path : `/post/${path}`;
+  let href = path.startsWith("/game/") ? path : `/post/${path}`;
   return (
     <li className='ml-3 list-inside'>
       <Link href={href}>{label}</Link>
@@ -28,25 +28,24 @@ const MenuItem = ({ label, id: path, subMenus }: MenuItemProps) => {
 
 interface SiderProps {}
 
+const menuArray = [
+  {
+    label: "Reading & Doing",
+    id: "Reading & Doing",
+    subMenus: getDirStructure(),
+  },
+  {
+    label: "Old Tiny Games",
+    id: "games",
+    subMenus: [
+      { label: "mine sweepers", id: "/game/mineSweepers" },
+      { label: "snake", id: "/game/snake" },
+      { label: "tetris", id: "/game/tetris" },
+    ],
+  },
+];
+
 export const Sider: React.FC<SiderProps> = () => {
-
-  const menuArray = [
-    {
-      label: "Reading & Doing",
-      id: "Reading & Doing",
-      subMenus: getDirStructure(),
-    },
-    {
-      label: "Old Tiny Games",
-      id: "games",
-      subMenus: [
-        { label: "mine sweepers", id: "/game/mineSweepers" },
-        { label: "snake", id: "/game/snake" },
-        { label: "tetris", id: "/game/tetris" },
-      ],
-    },
-  ];
-
   return (
     <div
       id='sider'

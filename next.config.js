@@ -21,7 +21,7 @@ module.exports = (...rest) => {
     reactStrictMode: false,
     output: process.env.NEXT_PUBLIC_OUTPUT || undefined,
     compiler: {
-      removeConsole: isProd,
+      // removeConsole: isProd,
     },
     cleanDistDir: true,
     swcMinify: true,

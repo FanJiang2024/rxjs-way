@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight,
   AiOutlineGithub,
 } from "react-icons/ai";
 import Link from "next/link";
