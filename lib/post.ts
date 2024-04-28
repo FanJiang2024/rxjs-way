@@ -49,7 +49,7 @@ export interface FileStructure {
 
 let memo: any = null;
 
-const parent = isProd() ? ".next/server/static" : "";
+const parent = isProd() ? ".next/server/chunks" : "";
 
 // 递归获取目录解构
 export function getDirStructure(
