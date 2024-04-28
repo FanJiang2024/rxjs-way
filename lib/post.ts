@@ -56,12 +56,16 @@ export function getDirStructure(
   dirPath: string = path.join(process.cwd(), parent, "posts"),
   ind: number = 0,
 ): FileStructure[] {
+  console.log(parent);
   if (memo) {
     console.log("file structure hit!!");
     return memo;
   }
 
-  if (!fs.existsSync(dirPath)) return [];
+  if (!fs.existsSync(dirPath)) {
+    console.log(fs.readdirSync(path.join(process.cwd(), ".next"), { recursive: true }));
+    return [];
+  }
   const res = fs
     .readdirSync(dirPath)
     .filter(

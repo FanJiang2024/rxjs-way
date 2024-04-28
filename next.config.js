@@ -5,8 +5,6 @@ const CopyPlugin = require("copy-webpack-plugin");
 const isGithubActions = process.env.GITHUB_ACTIONS || false;
 const isProd = process.env.NODE_ENV === "production";
 
-
-
 if (isGithubActions) {
   // 去掉 `<owner>/`
   console.log("GITHUB_REPOSITORY: ", process.env.GITHUB_REPOSITORY);
@@ -31,17 +29,17 @@ module.exports = (...rest) => {
       config,
       { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
     ) => {
-
-      isServer && config.plugins.push(
-        new CopyPlugin({
-          patterns: [
-            {
-              from: "./posts",
-              to: "./static/posts",
-            },
-          ],
-        }),
-      );
+      isServer &&
+        config.plugins.push(
+          new CopyPlugin({
+            patterns: [
+              {
+                from: "./posts",
+                to: "./static/posts",
+              },
+            ],
+          }),
+        );
 
       return config;
     },
