@@ -46,11 +46,17 @@ export interface FileStructure {
   subMenus?: FileStructure[] | null;
 }
 
+let memo: any = null;
+
 // 递归获取目录解构
 export function getDirStructure(
   dirPath: string = path.join(process.cwd(), "posts"),
   ind: number = 0,
 ): FileStructure[] {
+  if (memo) {
+    console.log("file structure hit!!");
+    return memo;
+  }
   const res = fs
     .readdirSync(dirPath)
     .filter(
@@ -78,6 +84,7 @@ export function getDirStructure(
       return menu;
     });
 
+  memo = res;
   return res;
 }
 

@@ -7,8 +7,8 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "npx prettier . --write",
-    "build": "cross-env NEXT_PUBLIC_HOST=https://rxjs-way.vercel.app next build && cp -R ./posts ./.next",
-    "build:local": "cross-env NEXT_PUBLIC_HOST=http://localhost:3000 next build",
+    "build": "cross-env NEXT_PUBLIC_HOST=https://rxjs-way.vercel.app && next build",
+    "build:local": "cross-env NEXT_PUBLIC_HOST=http://localhost:3000 &&  next build",
     "build:docker": "cross-env NEXT_PUBLIC_OUTPUT=standalone NEXT_PUBLIC_HOST=http://127.0.0.1:3000 next build && cp -R ./public ./.next/standalone && cp -R ./.next/static ./.next/standalone/.next",
     "build:github": "not work cross-env NEXT_PUBLIC_OUTPUT=export next build"
   },

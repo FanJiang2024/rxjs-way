@@ -3,10 +3,9 @@
 import { Loading } from "@/components/loading";
 import React, { Suspense } from "react";
 
-
-const mineSweepers = React.lazy(() => import(`@/games/mineSweepers/view`))
-const snake = React.lazy(() => import(`@/games/snake/view`))
-const tetris = React.lazy(() => import(`@/games/tetris/view`))
+const mineSweepers = React.lazy(() => import(`@/games/mineSweepers/view`));
+const snake = React.lazy(() => import(`@/games/snake/view`));
+const tetris = React.lazy(() => import(`@/games/tetris/view`));
 
 export type GameViewId = "mineSweepers" | "snake" | "tetris";
 type GameViewType = {
@@ -20,6 +19,7 @@ let viewObj: GameViewType = {
 };
 
 function GameView({ id }: { id: GameViewId }) {
+  // debugger;
   const Content = viewObj[id];
 
   return (
