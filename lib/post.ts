@@ -57,6 +57,12 @@ export function getDirStructure(
     console.log("file structure hit!!");
     return memo;
   }
+
+  if (!fs.existsSync(dirPath)) {
+    console.log(fs.readdirSync(process.cwd()));
+    dirPath = path.join(process.cwd(), ".next", "posts");
+  }
+  if (!fs.existsSync(dirPath)) return [];
   const res = fs
     .readdirSync(dirPath)
     .filter(
