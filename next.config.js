@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 // const repo = "https://jiangfan233.github.io/rxjs-way";
 const isGithubActions = process.env.GITHUB_ACTIONS || false;
@@ -30,6 +31,18 @@ module.exports = (...rest) => {
       config,
       { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
     ) => {
+
+      config.plugins.push(
+        new CopyPlugin({
+          patterns: [
+            {
+              from: "./posts",
+              to: "./posts",
+            },
+          ],
+        }),
+      );
+
       return config;
     },
   };
