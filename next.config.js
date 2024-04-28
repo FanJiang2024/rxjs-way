@@ -32,12 +32,12 @@ module.exports = (...rest) => {
       { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
     ) => {
 
-      config.plugins.push(
+      isServer && config.plugins.push(
         new CopyPlugin({
           patterns: [
             {
               from: "./posts",
-              to: "./posts",
+              to: "./static/posts",
             },
           ],
         }),

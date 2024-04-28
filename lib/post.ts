@@ -4,6 +4,7 @@ import fs from "fs";
 import { Buffer } from "buffer";
 import { JSDOM } from "jsdom";
 import createDOMPurify from "dompurify";
+import { isProd } from "./utils";
 
 const hljs = require("highlight.js/lib/core");
 
@@ -48,9 +49,11 @@ export interface FileStructure {
 
 let memo: any = null;
 
+const parent = isProd() ? ".next/server/static" : "";
+
 // 递归获取目录解构
 export function getDirStructure(
-  dirPath: string = path.join(process.cwd(), "posts"),
+  dirPath: string = path.join(process.cwd(), parent, "posts"),
   ind: number = 0,
 ): FileStructure[] {
   if (memo) {
@@ -58,10 +61,6 @@ export function getDirStructure(
     return memo;
   }
 
-  if (!fs.existsSync(dirPath)) {
-    console.log(fs.readdirSync(path.join(process.cwd(), ".next")));
-    dirPath = path.join(process.cwd(), ".next", "posts");
-  }
   if (!fs.existsSync(dirPath)) return [];
   const res = fs
     .readdirSync(dirPath)
