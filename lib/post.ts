@@ -53,7 +53,7 @@ const parent = isProd() ? ".next/server/chunks" : "";
 
 // 递归获取目录解构
 export function getDirStructure(
-  dirPath: string = path.join(process.cwd(), parent, "posts"),
+  dirPath: string = path.join(process.cwd(), "posts"),
   ind: number = 0,
 ): FileStructure[] {
   console.log(parent);
@@ -63,8 +63,11 @@ export function getDirStructure(
   }
 
   if (!fs.existsSync(dirPath)) {
-    console.log(fs.readdirSync(path.join(process.cwd(), ".next"), { recursive: true }));
-    return [];
+    dirPath = path.join(process.cwd(), parent, "posts");
+    if(!fs.existsSync(dirPath)) {
+      console.log(fs.readdirSync(path.join(process.cwd(), ".next"), { recursive: true }));
+      return [];
+    }
   }
   const res = fs
     .readdirSync(dirPath)
