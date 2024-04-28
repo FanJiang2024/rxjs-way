@@ -59,7 +59,7 @@ export function getDirStructure(
   }
 
   if (!fs.existsSync(dirPath)) {
-    console.log(fs.readdirSync(process.cwd()));
+    console.log(fs.readdirSync(path.join(process.cwd(), ".next")));
     dirPath = path.join(process.cwd(), ".next", "posts");
   }
   if (!fs.existsSync(dirPath)) return [];
