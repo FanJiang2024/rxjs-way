@@ -50,10 +50,11 @@ export interface FileStructure {
 let memo: any = null;
 
 const parent = isProd() ? "" : "";
+const postsDirectory = path.join(process.cwd(), "_posts");
 
 // 递归获取目录解构
 export function getDirStructure(
-  dirPath: string = path.join(process.cwd(), "_posts"),
+  dirPath: string = path.join(postsDirectory),
   ind: number = 0,
 ): FileStructure[] {
   console.log(parent);
