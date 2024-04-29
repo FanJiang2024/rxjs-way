@@ -49,11 +49,11 @@ export interface FileStructure {
 
 let memo: any = null;
 
-const parent = isProd() ? ".next/server/chunks" : "";
+const parent = isProd() ? "" : "";
 
 // 递归获取目录解构
 export function getDirStructure(
-  dirPath: string = path.join(process.cwd(), "posts"),
+  dirPath: string = path.join(process.cwd(), "_posts"),
   ind: number = 0,
 ): FileStructure[] {
   console.log(parent);

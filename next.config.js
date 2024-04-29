@@ -29,17 +29,17 @@ module.exports = (...rest) => {
       config,
       { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
     ) => {
-      isServer &&
-        config.plugins.push(
-          new CopyPlugin({
-            patterns: [
-              {
-                from: "./posts",
-                to: "./static/chunks/posts",
-              },
-            ],
-          }),
-        );
+      // isServer &&
+        // config.plugins.push(
+        //   new CopyPlugin({
+        //     patterns: [
+        //       {
+        //         from: "./posts",
+        //         to: "./static/chunks/posts",
+        //       },
+        //     ],
+        //   }),
+        // );
 
       return config;
     },
