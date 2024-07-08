@@ -59,7 +59,7 @@ export function getDirStructure(
 ): FileStructure[] {
   console.log(parent);
   if (memo) {
-    console.log("file structure hit!!");
+    // console.log("file structure hit!!");
     return memo;
   }
 
