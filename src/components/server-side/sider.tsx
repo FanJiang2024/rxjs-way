@@ -1,3 +1,5 @@
+"use Client"
+
 import { FileStructure, getDirStructure } from "@lib/post";
 import Link from "next/link";
 
@@ -38,9 +40,9 @@ const menuArray = [
     label: "Old Tiny Games",
     id: "games",
     subMenus: [
-      { label: "mine sweepers", id: "/game/mineSweepers" },
-      { label: "snake", id: "/game/snake" },
-      { label: "tetris", id: "/game/tetris" },
+      { label: "mine sweepers", id: "@/game/mineSweepers" },
+      { label: "snake", id: "@/game/snake" },
+      { label: "tetris", id: "@/game/tetris" },
     ],
   },
 ];
@@ -57,7 +59,7 @@ export const Sider: React.FC<SiderProps> = () => {
       peer-[.toggle]:-z-20
       peer-[.toggle]:max-h-0
       peer-[.toggle:focus]:opacity-100 
-      peer-[.toggle:focus]:z-20
+      peer-[.toggle:focus]:z-50
       peer-[.toggle:focus]:max-h-[90vh]'>
       {menuArray.map(({ label, id, subMenus: menuItems }) => (
         <div key={label} className='rounded-md mb-2'>

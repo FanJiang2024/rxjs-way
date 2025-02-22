@@ -41,8 +41,9 @@ const Canvas = () => {
   const canvasUtilRef = useRef<CanvasUtil | null>(null);
   const allStarsInfoRef = useRef<InstancedMesh[]>([]);
   const fetchedStarsRef = useRef<PlanetItemType[]>([]);
-  const pageInfoRef = useRef({ currentPage: 2, perPage: 50 });
+  const pageInfoRef = useRef({ currentPage: 2, perPage: 5 });
   const [error, setError] = useState("");
+  const timerRef = useRef<NodeJS.Timer | undefined>();
 
   const handleResize = useCallback(
     () => sceneAndEngineRef.current?.engine.resize(),
@@ -129,17 +130,21 @@ const Canvas = () => {
     // sceneAndEngineRef.current?.engine.
     window.addEventListener("resize", handleResize);
     window.addEventListener("wheel", handleGoForward);
+    timerRef.current = setInterval(() => {
+      getStars()
+    }, 10000)
 
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("wheel", handleGoForward);
+      timerRef.current && clearInterval(timerRef.current);
     };
   }, [handleResize, handleGoForward]);
 
   // create initial stars
   useEffect(() => {
     const fetchData = async () => {
-      const res = await getData(1, 100);
+      const res = await getData(1, 10);
       fetchedStarsRef.current.push(...res.data);
       callWhenIdle(addStar);
     };
