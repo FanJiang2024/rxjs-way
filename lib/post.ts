@@ -1,7 +1,6 @@
 import path from "path";
 import matter from "gray-matter";
 import fs from "fs";
-import { Buffer } from "buffer";
 import { JSDOM } from "jsdom";
 import createDOMPurify from "dompurify";
 import { isProd } from "./utils";
@@ -47,7 +46,6 @@ export interface FileStructure {
   subMenus?: FileStructure[] | null;
 }
 
-let memo: any = null;
 
 const parent = isProd() ? "" : "";
 const postsDirectory = path.join(process.cwd(), "_posts");
@@ -58,14 +56,10 @@ export function getDirStructure(
   ind: number = 0,
 ): FileStructure[] {
   console.log(parent);
-  if (memo) {
-    // console.log("file structure hit!!");
-    return memo;
-  }
 
   if (!fs.existsSync(dirPath)) {
     dirPath = path.join(process.cwd(), parent, "posts");
-    if(!fs.existsSync(dirPath)) {
+    if (!fs.existsSync(dirPath)) {
       console.log(fs.readdirSync(path.join(process.cwd(), ".next"), { recursive: true }));
       return [];
     }
@@ -97,7 +91,6 @@ export function getDirStructure(
       return menu;
     });
 
-  memo = res;
   return res;
 }
 

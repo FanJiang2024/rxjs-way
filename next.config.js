@@ -23,7 +23,7 @@ module.exports = (...rest) => {
       // removeConsole: isProd,
     },
     cleanDistDir: true,
-    swcMinify: true,
+    // swcMinify: true,
     env: {},
     webpack: (
       config,
