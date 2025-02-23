@@ -130,14 +130,14 @@ const Canvas = () => {
     // sceneAndEngineRef.current?.engine.
     window.addEventListener("resize", handleResize);
     window.addEventListener("wheel", handleGoForward);
-    timerRef.current = setInterval(() => {
-      getStars()
-    }, 10000)
+    // timerRef.current = setInterval(() => {
+    //   getStars()
+    // }, 10000)
 
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("wheel", handleGoForward);
-      timerRef.current && clearInterval(timerRef.current);
+      // timerRef.current && clearInterval(timerRef.current);
     };
   }, [handleResize, handleGoForward]);
 

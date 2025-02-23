@@ -56,6 +56,7 @@
 ## Links
 
 - [Personal Blog](https://rxjs-way.vercel.app/)  
+- [Reading & Writing](https://fire2345.github.io/blog/)
 - [GitHub](https://github.com/FanJiang2024)  
 
 ## Interests
