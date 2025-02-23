@@ -1,6 +1,6 @@
 ### Play gitlab with podman
 
-<b>If you are in China, make sure you have a stable and 'magic' network.</b>
+**If you are in China, make sure you have a stable and 'magic' network.**
 
 - 0、Prepare
 

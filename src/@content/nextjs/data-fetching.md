@@ -2,8 +2,7 @@
 
 1、In client components, I can fetch some data in useEffect hook after the page loaded. And fetch some data after receiving user inputs, such as mouse down, key down and so on.
 
-```typescript
-"use client";
+```ts
 
 // this is a client component
 export default function Page() {
@@ -23,7 +22,7 @@ Client components runs in browser, which cannot access database. But we can pass
 
 In the parent component:
 
-```typescript
+```ts
 import ClientComponent from "@/(root)/page";
 
 // 'use server' must be in a async function.
@@ -44,8 +43,8 @@ export default async function RootLayout() {
 
 In the child component:
 
-```typescript
-"use client";
+```ts
+//"use client";
 
 // this is a client component.
 export default function Page({ data, getData }) {
@@ -64,6 +63,6 @@ export default function Page({ data, getData }) {
 
 If i want to "GET" or "POST" data in a-folder/b-folder/page.tsx, I need to define a GET or POST function in a-folder/b-folder/api/route.ts. I can simply get these data through my browser: http://localhost:3000/a-folder/b-folder/api
 
-This alse means I need to <span style="color: red;">use some auth logic to protect my routes</span>.
+This alse means I need to use some auth logic to protect my routes.
 
 I can also access local database(is this a common scenario?) and cache data use fetch options and route handlers.

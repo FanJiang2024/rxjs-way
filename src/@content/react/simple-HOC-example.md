@@ -2,9 +2,7 @@
 
 > [Full HOC Example](https://react-typescript-cheatsheet.netlify.app/docs/hoc/full_example)
 
-```typescript
-
-
+```ts
 interface WithHocProps {}
 
 export const clientOnly = <T extends WithHocProps = WithHocProps>(

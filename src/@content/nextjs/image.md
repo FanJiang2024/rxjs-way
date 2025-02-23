@@ -2,7 +2,7 @@
 
 - 1、handle image loads failed:
 
-```tsx
+```jsx
 // use the smaller image as a primary image.
 import img from "@pulic/a.webp";
 
@@ -11,6 +11,7 @@ import imgBak from "@public/a.png";
 
 const Page = () => {
   const [image, setImage] = useState(img);
+  const counterRef = useRef(0);
 
   return (
     <>
@@ -22,7 +23,13 @@ const Page = () => {
         style={{ width: "200px", height: "200px" }}
         width={200}
         height={150}
-        onError={(e) => setImage(imgBak)}
+        onError={(e) => {
+          if(counterRef.current < 3) {
+            setImage(imgBak)
+          } else {
+            // post error msg
+          }
+        }}
       />
     </>
   );

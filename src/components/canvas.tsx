@@ -41,7 +41,7 @@ const Canvas = () => {
   const canvasUtilRef = useRef<CanvasUtil | null>(null);
   const allStarsInfoRef = useRef<InstancedMesh[]>([]);
   const fetchedStarsRef = useRef<PlanetItemType[]>([]);
-  const pageInfoRef = useRef({ currentPage: 2, perPage: 5 });
+  const pageInfoRef = useRef({ currentPage: 2, perPage: 2 });
   const [error, setError] = useState("");
   const timerRef = useRef<NodeJS.Timer | undefined>();
 
@@ -93,17 +93,17 @@ const Canvas = () => {
   const canvasPointerEventHandler = useMemo(() => {
     let isClicking = false;
 
-    const handlePointerDown = (e: React.PointerEvent) => {
+    const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
       e.stopPropagation();
       isClicking = true;
       canvasRef.current!.style.cursor = "grabbing";
     };
 
-    const handlePointerMove = (e: React.PointerEvent) => {
+    const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
       if (isClicking) canvasRef.current!.style.cursor = "grabbing";
     };
 
-    const handlePointerUp = (e: React.PointerEvent) => {
+    const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
       e.stopPropagation();
       canvasRef.current!.style.cursor = "grab";
       isClicking = false;

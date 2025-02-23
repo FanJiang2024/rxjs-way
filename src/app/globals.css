@@ -137,7 +137,7 @@ body {
 }
 
 .markdown-body code {
-  background-color: var(--dark-scheme-text-color) !important;
+  /* background-color: var(--dark-scheme-text-color) !important; */
 }
 
 .markdown-body pre {

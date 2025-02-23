@@ -1,44 +1,11 @@
 import path from "path";
 import matter from "gray-matter";
 import fs from "fs";
-import { JSDOM } from "jsdom";
-import createDOMPurify from "dompurify";
 import { isProd } from "./utils";
+import { remark } from "remark";
+import html from 'remark-html';
+import remarkImages from 'remark-images'
 
-const hljs = require("highlight.js/lib/core");
-
-hljs.registerLanguage(
-  "javascript",
-  require("highlight.js/lib/languages/javascript"),
-);
-
-const md = require("markdown-it")({
-  html: true, // Enable HTML tags in source
-  xhtmlOut: false, // Use '/' to close single tags (<br />).
-  // This is only for full CommonMark compatibility.
-  breaks: true, // Convert '\n' in paragraphs into <br>
-  langPrefix: "language-", // CSS language prefix for fenced blocks. Can be
-  // useful for external highlighters.
-  linkify: false, // Autoconvert URL-like text to links
-
-  // Enable some language-neutral replacement + quotes beautification
-  // For the full list of replacements, see https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/replacements.js
-  typographer: false,
-
-  // Double + single quotes replacement pairs, when typographer enabled,
-  // and smartquotes on. Could be either a String or an Array.
-  //
-  // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
-  // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
-  quotes: "“”‘’",
-
-  // Highlighter function. Should return escaped HTML,
-  // or '' if the source string is not changed and should be escaped externally.
-  // If result starts with <pre... internal wrapper is skipped.
-}).use(require("markdown-it-highlightjs"), { hljs });
-
-const window = new JSDOM("").window;
-const DOMPurify = createDOMPurify(window);
 
 export interface FileStructure {
   id: string;
@@ -48,14 +15,13 @@ export interface FileStructure {
 
 
 const parent = isProd() ? "" : "";
-const postsDirectory = path.join(process.cwd(), "_posts");
+const postsDirectory = path.join(process.cwd(), "src", "@content");
 
 // 递归获取目录解构
 export function getDirStructure(
   dirPath: string = path.join(postsDirectory),
   ind: number = 0,
 ): FileStructure[] {
-  console.log(parent);
 
   if (!fs.existsSync(dirPath)) {
     dirPath = path.join(process.cwd(), parent, "posts");
@@ -75,7 +41,7 @@ export function getDirStructure(
       const stat = fs.lstatSync(filePath);
       const fileName = file.slice(0, file.lastIndexOf("."));
       const menu = {
-        id: "@" + encodeURIComponent(filePath.replace(postsDirectory, "")),
+        id: encodeURIComponent(filePath.replace(postsDirectory, "")),
         // id: Buffer.from(filePath, "utf8").toString("base64url"),
         label: stat.isDirectory() ? file : fileName,
         subMenus: stat.isDirectory() ? getDirStructure(filePath) : null,
@@ -101,18 +67,27 @@ export interface FileContent {
 }
 
 // 根据文件路径获取并解析markdown文件内容
-export const getFileContent = async (filePath: string) => {
-  // const fPath = Buffer.from(filePath, "base64url").toString("utf8");
-  const fPath = path.join(postsDirectory, decodeURIComponent(filePath).slice(1));
-  if (!fs.existsSync(fPath)) {
-    console.log("dafwafwfafwa", fPath)
-    return null;
-  }
-  const fileContent = fs.readFileSync(fPath, "utf-8");
-  const matterResult = matter(fileContent);
-  const content = DOMPurify.sanitize(md.render(matterResult.content));
+export async function getPostData(id: string) {
+  const fullPath = path.join(postsDirectory, id);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents);
+
+  // Use remark to convert markdown into HTML string
+  const processedContent = await remark()
+    .use(html)
+    .use(remarkImages)
+    .process(matterResult.content);
+  
+  
+  const contentHtml = processedContent.toString();
+
+
+  // Combine the data with the id and contentHtml
   return {
+    id,
+    contentHtml,
     ...matterResult.data,
-    content,
-  } as FileContent;
-};
+  };
+}
