@@ -28,49 +28,49 @@ export class Shape implements ShapeType {
       case 0:
         // i
         return new Shape(
-          "🟥",
+          "\u{1F7E5}",
           new Set([pos(0, 0), pos(1, 0), pos(2, 0), pos(3, 0)]),
           pos(1, 0),
         );
       case 1:
         // o
         return new Shape(
-          "🟧",
+          "\u{1F7EB}",
           new Set([pos(0, 0), pos(1, 0), pos(0, 1), pos(1, 1)]),
           pos(1, 0),
         );
       case 2:
         // j
         return new Shape(
-          "🎃",
+          "\u{1F383}",
           new Set([pos(1, 0), pos(1, 1), pos(1, 2), pos(0, 2)]),
           pos(1, 1),
         );
       case 3:
         // l
         return new Shape(
-          "🟩",
+          "\u{1F7EA}",
           new Set([pos(0, 0), pos(0, 1), pos(0, 2), pos(1, 2)]),
           pos(0, 1),
         );
       case 4:
         // s
         return new Shape(
-          "🟦",
+          "\u{1F7E6}",
           new Set([pos(1, 0), pos(2, 0), pos(1, 1), pos(0, 1)]),
           pos(1, 0),
         );
       case 5:
         // z
         return new Shape(
-          "🟪",
+          "\u{1F7E9}",
           new Set([pos(0, 0), pos(1, 0), pos(1, 1), pos(2, 1)]),
           pos(1, 0),
         );
       case 6:
         // t
         return new Shape(
-          "🟫",
+          "\u{1F7E8}",
           new Set([pos(0, 0), pos(1, 0), pos(2, 0), pos(1, 1)]),
           pos(1, 0),
         );

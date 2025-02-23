@@ -1,3 +1,5 @@
+"use Client";
+
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Pos } from "../components/pos";
 import { GameBoard } from "./gameboard";

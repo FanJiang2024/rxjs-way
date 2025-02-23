@@ -25,13 +25,13 @@ export class Snake implements SnakeInf {
   headColor: string;
   color: string;
 
-  constructor(positions: Set<Pos>, headColor: string, color: string = "🟥") {
+  constructor(positions: Set<Pos>, headColor: string, color: string = "\u{1F7E5}") {
     this.positions = positions;
     this.headColor = headColor;
     this.color = color;
   }
 
-  static new(positions: Array<Pos>, headColor = "🔴") {
+  static new(positions: Array<Pos>, headColor = "\u{1F534}") {
     return new Snake(new Set(positions), headColor);
   }
 

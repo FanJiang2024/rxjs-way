@@ -67,7 +67,7 @@
 
 **Shanghai Zeshi Information Technology Co., Ltd.**  
 *Front-End Developer*  
-*Jan 2024 - Apr 2024 (Laid off)*
+*Jan 2024 - Sep 2024 (Laid off)*
 
 **Guangzhou Biao Zhi Wei Lai Information Technology Co., Ltd.**  
 *Front-End Developer*  

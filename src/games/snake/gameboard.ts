@@ -36,14 +36,18 @@ export class GameBoard implements GameBoardInf {
       width,
       height,
       Snake.new([
-        Food.newFood(width / 2, height / 2, "🟥"),
-        Food.newFood(width / 2 + 1, height / 2, "🟥"),
-        Food.newFood(width / 2 + 2, height / 2, "🟥"),
+        Food.newFood(width / 2, height / 2, "\u{1F7E5}"),
+        Food.newFood(width / 2 + 1, height / 2, "\u{1F7E5}"),
+        Food.newFood(width / 2 + 2, height / 2, "\u{1F7E5}"),
       ]),
+      /**
+       * \u1F7E5; for 🟥
+       * \u1F7EB; for 🟫
+       */
       Food.newFood(
         ~~(Math.random() * width),
         ~~(Math.random() * height),
-        ["🟥", "🟫", "🟪", "🟦", "🟩", "🟨", "🟧"][~~(Math.random() * 7)],
+        ["\u{1F7E5}", "\u{1F7EB}", "\u{1F7EA}", "\u{1F7E6}", "\u{1F7E9}", "\u{1F7E8}", "\u{1F7E7}"][~~(Math.random() * 7)],
       ),
       false,
     );
@@ -64,7 +68,7 @@ export class GameBoard implements GameBoardInf {
       Food.newFood(
         ~~(Math.random() * width),
         ~~(Math.random() * height),
-        ["🟥", "🟫", "🟪", "🟦", "🟩", "🟨", "🟧"][~~(Math.random() * 7)],
+        ["\u{1F7E5}", "\u{1F7EB}", "\u{1F7EA}", "\u{1F7E6}", "\u{1F7E9}", "\u{1F7E8}", "\u{1F7E7}"][~~(Math.random() * 7)],
       );
     let newFood = makeFood();
     while (this.isSnake(newFood)) {

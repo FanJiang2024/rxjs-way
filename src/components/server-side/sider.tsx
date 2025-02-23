@@ -1,5 +1,3 @@
-"use Client"
-
 import { FileStructure, getDirStructure } from "@lib/post";
 import Link from "next/link";
 
