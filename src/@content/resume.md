@@ -56,7 +56,6 @@
 ## Links
 
 - [Personal Blog](https://rxjs-way.vercel.app/)  
-- [Reading & Writing](https://fire2345.github.io/blog/)
 - [GitHub](https://github.com/FanJiang2024)  
 
 ## Interests
@@ -65,14 +64,6 @@
 
 ## Work Experience
 
-**Shanghai Zeshi Information Technology Co., Ltd.**  
+**Xinbadi Information Technology Co., Ltd.**  
 *Front-End Developer*  
-*Jan 2024 - Sep 2024 (Laid off)*
-
-**Guangzhou Biao Zhi Wei Lai Information Technology Co., Ltd.**  
-*Front-End Developer*  
-*Jul 2023 - Jan 2024 (Laid off)*
-
-**Guangzhou Xinbadi Information Technology Co., Ltd.**  
-*Front-End Developer*  
-*Apr 2022 - Apr 2023*
+*Aug 2020 - Aug 2024*
